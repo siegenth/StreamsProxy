@@ -6,5 +6,5 @@ Stream application playing in an adult manner with Liberty and MessageHub as a b
 
 Can I push from magit? yes
 
-
+Please drive this from magit as much as possible: ^xg
 
