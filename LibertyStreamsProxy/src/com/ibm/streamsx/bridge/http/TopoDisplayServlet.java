@@ -44,7 +44,7 @@ public class TopoDisplayServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		StreamsBlueMix sbm = new StreamsBlueMix();
 		sbm.getStreamResourceMapping();
-		StringBuffer sb = new StringBuffer("<html><head></head><body>");
+		StringBuffer sb = new StringBuffer("<html><head><title>TopoDisplayServlet</title></head><body>");
 		sb.append("<h2>Dervive Proxy and display - this will NOT overwrite active mapping.</h2>");
 		sb.append(sbm.getHtmlProcessing());
 		String testUrl = sbm.buildProxyTest(request.getScheme(), request.getServerName(), request.getServerPort());
