@@ -8,8 +8,20 @@
     <servlet-name>simple</servlet-name>
     <servlet-class>org.sonatype.mavenbook.web.SimpleServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>test</servlet-name>
+    <servlet-class>org.sonatype.mavenbook.web.TestTwo</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>simple</servlet-name>
     <url-pattern>/simple</url-pattern>
   </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>test</servlet-name>
+    <url-pattern>/test</url-pattern>
+  </servlet-mapping>  
+
 </web-app>
+

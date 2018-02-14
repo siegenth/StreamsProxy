@@ -51,13 +51,12 @@
     
   </dependencies>
   <parent>
-  	<artifactId>parent</artifactId>
-  	<groupId>com.ibm.streams</groupId>
-  	<version>1-SNAPSHOT</version>
+  	<groupId>com.ibm.streams.toolchain</groupId>    
+  	<artifactId>toolchain-parent</artifactId>
+  	<version>version0.1</version>
   </parent>
   <build>
     <finalName>simple-webapp</finalName>
-
     <plugins>
       <!-- compile the sources -->
       <plugin>

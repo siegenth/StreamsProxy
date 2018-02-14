@@ -1,0 +1,15 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.ibm.streams.toolchain</groupId>
+  <version>version0.1</version>
+  <artifactId>toolchain-parent</artifactId>
+  <packaging>pom</packaging>
+  <name>StreamsProxy</name>
+  <modules>
+    <!--
+	<module>LibertyStreamsProxy</module>
+    -->
+    <module>simple-webapp</module>
+  </modules>
+</project>
