@@ -5,100 +5,42 @@
   <packaging>war</packaging>
   <name>Chapter 5 Simple Web Application Project</name>
   <url>http://sonatype.com/book</url>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java-version>1.8</java-version>
-	<jettyVersion>7.2.0.v20101020</jettyVersion>	
-    </properties>  
-  
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.8.2</version>
-      <scope>test</scope>
-    </dependency>
-        <!-- Servlet 3.0 API -->
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
-            <version>3.0.1</version>
-            <scope>provided</scope>
-</dependency>
-	<dependency>
-	  <groupId>org.apache.httpcomponents</groupId>
-	  <artifactId>httpclient</artifactId>
-	  <version>4.5.4</version>
-	</dependency>
-	<dependency>
-	  <groupId>org.apache.httpcomponents</groupId>
-	  <artifactId>httpcore</artifactId>
-	  <version>4.4.8</version>
-</dependency>	
-    <!-- j2ee dependency 
-    <dependency>
-      <groupId>org.apache.geronimo.specs</groupId>
-      <artifactId>geronimo-servlet_2.4_spec</artifactId>
-      <version>1.1.1</version>
-    </dependency>
-    -->
-    <dependency>
-      <groupId>org.eclipse.jetty</groupId>
-      <artifactId>jetty-server</artifactId>
-      <version>${jettyVersion}</version>
-    </dependency>
-    
-  </dependencies>
   <parent>
   	<groupId>com.ibm.streams.toolchain</groupId>    
   	<artifactId>toolchain-parent</artifactId>
   	<version>version0.1</version>
   </parent>
-  <build>
-    <finalName>simple-webapp</finalName>
-    <plugins>
-      <!-- compile the sources -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
-        <configuration>
-          <source>${java-version}</source>
-          <target>${java-version}</target>
-        </configuration>
-      </plugin>
-      <!-- package components into war file -->
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-war-plugin</artifactId>
-        <version>2.3</version>
-        <configuration>
-          <failOnMissingWebXml>false</failOnMissingWebXml>
-        </configuration>
-      </plugin>
-	  <!-- Another possible AppServer to use. -->
-	  <!--	       
-          <plugin>
-            <groupId>org.apache.tomcat.maven</groupId>
-            <artifactId>tomcat7-maven-plugin</artifactId>
-            <version>2.0</version>
-            </plugin>
-	    -->
-	  <!-- runs jetty with MqStreamsProxy servelet -->
-	  <plugin>
-	    <groupId>org.eclipse.jetty</groupId>
-	    <artifactId>jetty-maven-plugin</artifactId>
-	    <version>9.4.8.v20171121</version>
-	    <configuration>
-	      <webAppConfig>
-		<overrideDescriptor>src/main/webapp/web.xml</overrideDescriptor>
-	      </webAppConfig>
-	    </configuration>
-	  </plugin>
+  
+  <repositories>
+    <repository>
+      <id>Liberty</id>
+      <name>Liberty Repository</name>
+      <url>http://public.dhe.ibm.com/ibmdl/export/pub/software/websphere/wasdev/maven/repository</url>
+    </repository>
+  </repositories>    
 
-    </plugins>
-
-    
-  </build>
+  <dependencies>
+    <dependency>
+      <groupId>com.ibm.tools.target</groupId>
+      <artifactId>was-liberty</artifactId>
+      <version>LATEST</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.jaxrs</groupId>
+      <artifactId>jackson-jaxrs-json-provider</artifactId>
+      <version>2.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>net.bluemix</groupId>
+      <artifactId>bluemix-cloud-connectors-local</artifactId>
+      <version>0.0.1.RC2</version>
+    </dependency>
+    <dependency>
+      <groupId>net.bluemix</groupId>
+      <artifactId>bluemix-cloud-connectors-cloudfoundry</artifactId>
+      <version>0.0.1.RC2</version>
+    </dependency>
+  </dependencies>    
 </project>
