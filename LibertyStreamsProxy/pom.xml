@@ -44,6 +44,11 @@
 	  <artifactId>fluent-hc</artifactId>
 	  <version>4.3.6</version>
 	</dependency>
+	<dependency>
+	  <groupId>org.mitre.dsmiley.httpproxy</groupId>
+	  <artifactId>smiley-http-proxy-servlet</artifactId>
+	  <version>1.10</version>
+	</dependency>	
 	<!-- https://mvnrepository.com/artifact/com.ibm.websphere.appserver.api/com.ibm.websphere.appserver.api.json -->
 	<dependency>
 	  <groupId>com.ibm.websphere.appserver.api</groupId>
@@ -126,13 +131,13 @@
 	    <groupId>org.eclipse.jetty</groupId>
 	    <artifactId>jetty-maven-plugin</artifactId>
 	    <version>9.4.8.v20171121</version>
-	    <!--
+
 	    <configuration>
 	      <webAppConfig>
 		<overrideDescriptor>src/main/webapp/web.xml</overrideDescriptor>
 	      </webAppConfig>
 	      </configuration>
-	      -->
+
 	  </plugin>
 <plugin>
     <groupId>org.apache.maven.plugins</groupId>
