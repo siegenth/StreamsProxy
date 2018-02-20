@@ -13,10 +13,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        
-	    <maven.compiler.source>1.8</maven.compiler.source>
-	    <maven.compiler.target>1.8</maven.compiler.target>
- 
+            <java-version>1.8</java-version>
 	    <jettyVersion>7.2.0.v20101020</jettyVersion>	
     </properties>
 
@@ -117,16 +114,6 @@
     <build>
       <finalName>${project.artifactId}-${project.version}</finalName>
       <plugins>
-	<!-- set the java compiler we need V8 feature -->
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-          <version>2.3.2</version>
-          <configuration>
-            <source>${java-version}</source>
-            <target>${java-version}</target>
-          </configuration>
-        </plugin>
 	<!-- specify the location of the web.xml file -->
 	  <plugin>
 	    <groupId>org.apache.maven.plugins</groupId>
@@ -135,27 +122,39 @@
               <webXml>web.xml</webXml>
             </configuration>	    
 	  </plugin>
-<plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-install-plugin</artifactId>
-    <version>2.5</version>
-    <!-- install jar that is not in maven and in the archive -->
-    <executions>
-        <execution>
-            <phase>initialize</phase>
-            <goals>
-                <goal>install-file</goal>
-            </goals>
+	  <plugin>
+	    <groupId>org.apache.maven.plugins</groupId>
+	    <artifactId>maven-install-plugin</artifactId>
+	    <version>2.5</version>
+	    <!-- install jar that is not in maven and in the archive -->
+	    <executions>
+              <execution>
+		<phase>initialize</phase>
+		<goals>
+                  <goal>install-file</goal>
+		</goals>
+		<configuration>
+                  <groupId>com.ibm.streamsx.topology</groupId>
+                  <artifactId>streams-topology</artifactId>
+                  <version>1.0</version>
+                  <packaging>jar</packaging>
+                  <file>${basedir}/installJar/com.ibm.streamsx.topology.jar</file>
+		</configuration>
+              </execution>
+	    </executions>
+	  </plugin>
+	  	<!-- setup the compiler -->
+	  <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.6.1</version>
             <configuration>
-                <groupId>com.ibm.streamsx.topology</groupId>
-                <artifactId>streams-topology</artifactId>
-                <version>1.0</version>
-                <packaging>jar</packaging>
-                <file>${basedir}/installJar/com.ibm.streamsx.topology.jar</file>
+              <source>${java-version}</source>	      
+              <target>${java-version}</target>
             </configuration>
-        </execution>
-    </executions>
 </plugin>
+
+
       </plugins>
     </build>
   </project>
