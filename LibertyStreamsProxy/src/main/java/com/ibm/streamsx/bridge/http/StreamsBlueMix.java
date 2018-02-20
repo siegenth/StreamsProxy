@@ -237,11 +237,10 @@ public class StreamsBlueMix  {
 		logList.add("<hr>");
 		logList.add("The mapping is..");
 		logList.add(activeStreamResource != null ? activeStreamResource.toString() : "NO activeStreamResource");
-		// TODO * removed to get past 1.8 limitation. - FIX
-		//		logList.forEach((temp) -> {
-		//			stringBuffer.append(temp);
-		//			stringBuffer.append("<br>");
-		//		});
+				logList.forEach((temp) -> {
+					stringBuffer.append(temp);
+					stringBuffer.append("<br>");
+				});
 		return (stringBuffer.toString());
 	}
 	/**
