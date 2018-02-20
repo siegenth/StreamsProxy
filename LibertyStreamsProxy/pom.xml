@@ -148,7 +148,7 @@
                 <artifactId>streams-topology</artifactId>
                 <version>1.0</version>
                 <packaging>jar</packaging>
-                <file>${basedir}/installJar/com.ibm.streamsx.topology.jar</file>
+		<file>${basedir}/installJar/com.ibm.streamsx.topology.jar</file>
             </configuration>
         </execution>
     </executions>
