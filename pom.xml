@@ -7,9 +7,9 @@
   <packaging>pom</packaging>
   <name>StreamsProxy</name>
   <modules>
-    <!--
+
 	<module>LibertyStreamsProxy</module>
-    -->
+
     <module>simple-webapp</module>
   </modules>
 </project>
