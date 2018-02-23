@@ -20,7 +20,7 @@ Assumed:
  
 Provided in Box:
  * UpperRest.sab : The Streams application bundle file, with the demonstration Streams application, source below. 
- * A video walking through the 
+ * A video walking through the process outlined here.
 
 
 Overview of Steps.
@@ -142,9 +142,6 @@ UPPER_CASE
 ```
 
 ## Appendix : Notes :
-
-Built versions of the files can be found on [box](https://ibm.box.com/s/gnofq4rd0910v1g9i3vavxgi3zola83u)
-
 
 Shut down the web application with....
 
