@@ -1,6 +1,6 @@
 # LibertyStreamsProxy Servlet - readme
 
-Dynamically build a bridge between the open WorldWideWeb and a Streams application running in BlueMix.
+Dynamically build a bridge between the open Web and a Streams application running in IBM Cloud.
 
 The servlet, running on BlueMix's *Liberty for Java Foundry App*, locates the connected Streams *Streaming Analytics* server and
 binds it Liberty's web address via an embedded proxy. The proxy configuration occurs on the first access from the web. 
@@ -20,7 +20,7 @@ Assumed:
  
 Provided in Box:
  * UpperRest.sab : The Streams application bundle file, with the demonstration Streams application, source below. 
- * LibertyStreamsProxy.war: this project.
+ * A video walking through the 
 
 
 Overview of Steps.
@@ -102,26 +102,39 @@ A built version of the program, UpperRest.sab, can be found in BOX.
 
 ### Upload the LibertyStreamsProxy server. 
 1. Go to the command-line.
+
 2. Login to your bluemix account, my logging in looks like...
 
 ```
 $ bluemix login  -o siegenth@us.ibm.com -s dev -sso
 ````
-When prompted following directions for the password. 
-3. Change to the directory with the war file, 'LibertyStreamsProxy.war'
-4. Upload the war file to Bluemix, using *Liberty App* name (LibertyRiver) and the war file (LibertyStreamsProxy.war). 
+When prompted, follow directions for password. 
+
+3. Change to the directory LibertyStreamsProxy.
+
+4. Build the proxy server with maven, output will be in 'target' directory. 
 
 ```
-$ bluemix cf push LibertyRiver -p LibertyStreamsProxy.war
+mvn clean install
 ```
-On completion of your application is ready to be accessed. 
 
-### Test your application .
-1. Execute the application using curl, swap in your *Liberty App* name before executing 
+4. Upload the war file to IBM Cloud, using *Liberty App* name (LibertyRiver) and the war file (LibertyStreamsProxy-v1.0.war). 
+```
+$ bluemix cf push LibertyRiver -p target/LibertyStreamsProxy-v1.0.war.
+```
+On completion the application is ready to be accessed. 
 
-*$ curl http://yourLibertyAppName.mybluemix.net/myStreams/rest/ports/analyze/0?upper_case*
+### Test the application .
+1. Build and texts the tests. 
 
-Using my *Liberty App* name, LibertyRiver, the execution looks like...
+```
+ mvn clean test -DappUrl=LibertyRiver.mybluemix.net -DskipTests=false
+```
+2. Execute the application using curl, swap in your *Liberty App* name before executing 
+
+*$ curl http://LibertyRiver.mybluemix.net/myStreams/rest/ports/analyze/0?upper_case*
+
+The execution looks like...
 
 ```
 $ curl http://libertyriver.mybluemix.net/myStreams/rest/ports/analyze/0?upper_case
@@ -132,8 +145,6 @@ UPPER_CASE
 
 Built versions of the files can be found on [box](https://ibm.box.com/s/gnofq4rd0910v1g9i3vavxgi3zola83u)
 
-The Proxy server is the work of [dsmiley@apache.org](https://github.com/mitre/HTTP-Proxy-Servlet).
-
 
 Shut down the web application with....
 
@@ -141,7 +152,6 @@ Shut down the web application with....
 bluemix cf stop LibertyRiver
 ```
 
-To bring up the application again, upload the LiberyStreamProxy server.  
 
 
 
