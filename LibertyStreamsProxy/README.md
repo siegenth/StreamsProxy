@@ -6,7 +6,7 @@ The servlet, running on BlueMix's *Liberty for Java Foundry App*, locates the co
 binds it Liberty's web address via an embedded proxy. The proxy configuration occurs on the first access from the web. 
 
 The servlet works in conjunction with Streams' INET toolkit (https://github.com/IBMStreams/streamsx.inet), transparently. 
-Streams applications that are accessed via HTTP or REST in a development environment can be exposed on the Web with no changes.
+Streams applications that are accessed via HTTP or REST in a development environment with no changes to the proxy server.
 
 The goal of this servlet, to easily move a Streams application from development to the web, for demonstration purposes.
 Leaving the application up may incur significant resource usage by nefarious web trolls.
