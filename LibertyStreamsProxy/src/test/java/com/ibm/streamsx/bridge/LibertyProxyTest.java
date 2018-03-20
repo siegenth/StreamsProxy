@@ -3,6 +3,7 @@ package com.ibm.streamsx.bridge;
 import junit.framework.TestCase;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
+import org.junit.Test;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,7 +38,9 @@ public class LibertyProxyTest extends TestCase {
      * <br>
      * This is a functional test of the LibertyServer, not of a application - it's been disabled.
      */
-    @Ignore public void testStreamsToUpperApplication() {
+    @Ignore("reqires streams application with toUpper processing running - move this")
+    @Test
+    public void testStreamsToUpperApplication() {
         List<String> strings = Arrays.asList("toUpper", "toUpper+again", "toUpper+UPPER+lower+UPPER");
 
         for (String str : strings) {
@@ -67,7 +70,9 @@ public class LibertyProxyTest extends TestCase {
      * This is a functional test of the LibertyServer, not of a application - it's been disabled.
      *
      */
-    @Ignore public void testStreamsToLowerApplication() {
+    @Ignore("requires streams application with toLower processing running - move this")
+    @Test
+    public void testStreamsToLowerApplication() {
         List<String> strings = Arrays.asList("toLOWER", "toLOWER+AGAIN", "LOWER+upper+LOWER+upper");
 
         for (String str : strings) {
@@ -94,6 +99,7 @@ public class LibertyProxyTest extends TestCase {
     /**
      * Test if the can run using the topology code, this is a test of Servlet not the connnection to Streams.
      */
+    @Test
     public void testIsTopologyActive() {
         int exceed = 2000;
         try {
@@ -128,7 +134,9 @@ public class LibertyProxyTest extends TestCase {
      * <br>
      * This is a functional test on the liberty cut, thus it's disabled.
      */
-    @Ignore public void testStreamsResource() {
+    @Ignore("requires Streams application running with INET toolkit - move this")
+    @Test
+    public void testStreamsResource() {
         int exceed = 1000;
         try {
             String urlStr = "https://"+ AppUrl + "/streamsx.inet.resources";
