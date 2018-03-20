@@ -38,6 +38,7 @@ public class LibertyProxyTest extends TestCase {
      * <br>
      * This is a functional test of the LibertyServer, not of a application - it's been disabled.
      */
+    /*
     @Ignore("reqires streams application with toUpper processing running - move this")
     @Test
     public void testStreamsToUpperApplication() {
@@ -63,13 +64,14 @@ public class LibertyProxyTest extends TestCase {
             }
         }
     }
-
+*/
     /**
      * Test if the lower application's lower case test is active.
      * <br>
      * This is a functional test of the LibertyServer, not of a application - it's been disabled.
      *
      */
+    /*
     @Ignore("requires streams application with toLower processing running - move this")
     @Test
     public void testStreamsToLowerApplication() {
@@ -95,6 +97,7 @@ public class LibertyProxyTest extends TestCase {
             }
         }
     }
+    */
 
     /**
      * Test if the can run using the topology code, this is a test of Servlet not the connnection to Streams.
@@ -134,6 +137,7 @@ public class LibertyProxyTest extends TestCase {
      * <br>
      * This is a functional test on the liberty cut, thus it's disabled.
      */
+    /*
     @Ignore("requires Streams application running with INET toolkit - move this")
     @Test
     public void testStreamsResource() {
@@ -161,5 +165,5 @@ public class LibertyProxyTest extends TestCase {
         }
 
     }
-
+*/
 }
