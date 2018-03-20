@@ -1,0 +1,11 @@
+export JAVA_HOME=$JAVA8_HOME
+export PATH=$JAVA_HOME/bin:$PATH
+echo "==== Look at the env"
+env
+echo "==== Look at what was cloned"
+ls -al LibertyStreamsProxy
+echo "==== install the topology jar"
+mvn -U initialize
+echo "==== run the test"
+mvn clean test -DappUrl=${ResourceName} -DskipTests=false
+ls -al

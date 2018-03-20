@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "value:${CF_APP}"
+#cf stop "${CF_APP}"
