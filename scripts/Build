@@ -1,0 +1,15 @@
+echo "==== Check the environment"
+env
+echo "==== Upgrade the compiler"
+export JAVA_HOME=$JAVA8_HOME
+export PATH=$JAVA_HOME/bin:$PATH
+echo "==== Look at what was cloned"
+ls -al LibertyStreamsProxy
+echo "==== install the topology jar"
+mvn -U initialize
+ls -al LibertyStreamsProxy
+echo "==== create the war file"
+mvn clean package
+echo "==== check if the .war file is in target"
+ls -al LibertyStreamsProxy/target
+echo "==== DONE"
