@@ -2,6 +2,7 @@ package com.ibm.streamsx.bridge;
 
 import junit.framework.TestCase;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,6 +14,13 @@ import java.net.URL;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * Test the liberty proxy server.
+ *
+ * <p>
+ *     Only check the that Liberty is up and that it can use the API to connect to Steams.
+ * </p>
+ */
 public class LibertyProxyTest extends TestCase {
     String AppUrl = null;
     @BeforeClass
@@ -21,10 +29,15 @@ public class LibertyProxyTest extends TestCase {
     }
     public LibertyProxyTest(String name) {
         super(name);
-        AppUrl = System.getProperty("appUrl", "proxystream.mybluemix.net");
+        AppUrl = System.getProperty("appUrl", "streamsproxy.mybluemix.net");
         System.out.println(String.format("Using '%s' as root of application URL (appUrl).", AppUrl));
     }
-    public void testStreamsToUpperApplication() {
+    /**
+     * Test if the application's upper case test is active.
+     * <br>
+     * This is a functional test of the LibertyServer, not of a application - it's been disabled.
+     */
+    @Ignore public void testStreamsToUpperApplication() {
         List<String> strings = Arrays.asList("toUpper", "toUpper+again", "toUpper+UPPER+lower+UPPER");
 
         for (String str : strings) {
@@ -47,7 +60,14 @@ public class LibertyProxyTest extends TestCase {
             }
         }
     }
-    public void testStreamsToLowerApplication() {
+
+    /**
+     * Test if the lower application's lower case test is active.
+     * <br>
+     * This is a functional test of the LibertyServer, not of a application - it's been disabled.
+     *
+     */
+    @Ignore public void testStreamsToLowerApplication() {
         List<String> strings = Arrays.asList("toLOWER", "toLOWER+AGAIN", "LOWER+upper+LOWER+upper");
 
         for (String str : strings) {
@@ -71,10 +91,11 @@ public class LibertyProxyTest extends TestCase {
         }
     }
 
-
+    /**
+     * Test if the can run using the topology code, this is a test of Servlet not the connnection to Streams.
+     */
     public void testIsTopologyActive() {
-
-        int exceed = 4000;
+        int exceed = 2000;
         try {
             String urlStr = "https://"+ AppUrl + "/TopoDisplay";
             URL url = new URL(urlStr);
@@ -99,8 +120,15 @@ public class LibertyProxyTest extends TestCase {
         }
 
     }
-
-    public void testStreamsResource() {
+    /**
+     * Test if the Inet operator toolkit is attached.
+     * <br>
+     * When the application  uses the Inet operator is up this should return a html. But if
+     * have not brought up the instance and an application this will generate an error.
+     * <br>
+     * This is a functional test on the liberty cut, thus it's disabled.
+     */
+    @Ignore public void testStreamsResource() {
         int exceed = 1000;
         try {
             String urlStr = "https://"+ AppUrl + "/streamsx.inet.resources";
