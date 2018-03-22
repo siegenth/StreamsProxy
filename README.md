@@ -8,3 +8,4 @@ Can I push from magit? yes
 
 Please drive this from magit as much as possible: ^xg
 
+Can this force an build....
