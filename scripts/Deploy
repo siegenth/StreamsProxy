@@ -4,9 +4,7 @@ echo "----- END buildpacks------"
 cf logs pipeline-1518642273 --recent
 echo "----- END logs------"
 ls -al
-echo "==== What do we have - in LibertyStreamsProxy."
-ls -al LibertyStreamsProxy
-echo "==== Is the war file available - in LibertyStreamsProxy/target"
-ls -al LibertyStreamsProxy/target
+echo "==== Is the war file available - in ${ARCHIVE_DIR}"
+ls -al ${ARCHIVE_DIR}
 echo "==== Deploy the the war"
-cf push "${CF_APP}" -p LibertyStreamsProxy/target/StreamsProxy-v1.0.war
+cf push "${CF_APP}" -p ${ARCHIVE_DIR}/StreamsProxy-v1.0.war
