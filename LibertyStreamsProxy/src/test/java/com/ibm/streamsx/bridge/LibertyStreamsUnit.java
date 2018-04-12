@@ -130,6 +130,38 @@ public class LibertyStreamsUnit extends TestCase {
 
     }
     /**
+     * Place holder for status check that will verify that the
+     * status console is active.
+     */
+    @Test
+    public void testStatusConsole() {
+        int exceed = 2000;
+        try {
+            String urlStr = "https://"+ AppUrl + "/TopoDisplay";
+            URL url = new URL(urlStr);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            assertEquals(200, con.getResponseCode());
+            assertEquals("OK", con.getResponseMessage());
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            int len;
+            int tot = 0;
+            String inStr = null;
+            while (null != (inStr = in.readLine())) {
+                tot += inStr.length();
+            }
+            assertTrue(String.format("Expected '%s' to exceed %d was %d",urlStr, exceed, tot), tot > exceed );
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    /**
      * Test if the Inet operator toolkit is attached.
      * <br>
      * When the application  uses the Inet operator is up this should return a html. But if
