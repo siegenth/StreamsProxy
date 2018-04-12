@@ -5,8 +5,11 @@
 echo "==== Value of CF_APP : [${CF_APP}]"
 cf buildpacks
 echo "==== Directory of file being deployed ...."
-
+if [ -z ARCHIVE_DIR ]
+then
+ARCHIVE_DIR=".'
+fi
 ls -Ral ${ARCHIVE_DIR}
-echo "==== File being deployed : ${ARCHIVE_DIR}/LibertyStreamsProxy/target/StreamsProxy-v1.0.war"
+echo "==== File being deployed : LibertyStreamsProxy/target/StreamsProxy-v1.0.war"
 echo "==== Deploy the file"
 cf push "${CF_APP}" -p ${ARCHIVE_DIR}/LibertyStreamsProxy/target/StreamsProxy-v1.0.war
