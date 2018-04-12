@@ -1,12 +1,19 @@
+# This is expected to be invoked from a 'Test' job of a Stage, after
+# the servlet has been deployed. The build was done in a prior Stage.
+# The tests are run via Maven, the results are down the standard
+# 'surefire' path.
+# The name of this file is the the name of a Stage's job name,
+# if you change this name you much change the name of the job.
+#
+#
+# Setup the build environment.
 export JAVA_HOME=$JAVA8_HOME
 export PATH=$JAVA_HOME/bin:$PATH
-echo "==== Look at the env"
+echo "==== Look at the env..."
 env
-echo "==== Look at what was cloned"
-ls -al LibertyStreamsProxy
-echo "==== install the topology jar"
+echo "==== Install the topology jar"
 mvn -U initialize
-echo "==== run the test"
-#mvn clean test -DappUrl=${ResourceName} -DskipTests=false
+echo "==== run the unit tests..."
 mvn test -Dtest=LibertyStreamsUnit -DappUrl=${ResourceName} -DskipTests=false
+# Show the xml files, the surefire results should be here.
 find . -name "*.xml" -print

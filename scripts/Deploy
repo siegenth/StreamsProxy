@@ -1,12 +1,11 @@
-# This is expected to be invoked from a
-#This deploys the application, the prior Stage
+# This is expected to be invoked from a 'Deploy' job of a Stage, after
+# a 'Build' job of a prior stage has completed successuflly.
+# This deploys the application .war file to the cloud.
+#
 echo "==== Value of CF_APP : [${CF_APP}]"
 cf buildpacks
-echo "----- END buildpacks------"
-cf logs pipeline-1518642273 --recent
-echo "----- END logs------"
-ls -al
-echo "==== Is the war file available - in ${ARCHIVE_DIR}"
-ls -al ${ARCHIVE_DIR}
-echo "==== Deploy the the war"
-cf push "${CF_APP}" -p ${ARCHIVE_DIR}/StreamsProxy-v1.0.war
+echo "==== Directory of file being deployed ...."
+ls -al ${ARCHIVE_DIR}/LibertyStreamsProxy/target"
+echo "==== File being deployed : ${ARCHIVE_DIR}/LibertyStreamsProxy/target/StreamsProxy-v1.0.war"
+echo "==== Deploy the file"
+cf push "${CF_APP}" -p ${ARCHIVE_DIR}/LibertyStreamsProxy/target/StreamsProxy-v1.0.war

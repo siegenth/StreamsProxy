@@ -1,3 +1,4 @@
-#!/bin/bash
+# The name of this file is the the name of a Stage's job name,
+# if you change this file name you much change the name of the job.
 echo "value:${CF_APP}"
 cf stop "${CF_APP}"
