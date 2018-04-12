@@ -1,3 +1,5 @@
+# This is expected to be invoked from a
+#This deploys the application, the prior Stage
 echo "==== Value of CF_APP : [${CF_APP}]"
 cf buildpacks
 echo "----- END buildpacks------"

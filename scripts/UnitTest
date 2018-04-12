@@ -7,4 +7,6 @@ ls -al LibertyStreamsProxy
 echo "==== install the topology jar"
 mvn -U initialize
 echo "==== run the test"
-mvn clean test -DappUrl=${ResourceName} -DskipTests=false
+#mvn clean test -DappUrl=${ResourceName} -DskipTests=false
+mvn test -Dtest=LibertyStreamsUnit -DappUrl=${ResourceName} -DskipTests=false
+find . -name "*.xml" -print
